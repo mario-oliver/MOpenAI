@@ -11,6 +11,20 @@ function App() {
       </aside>
 
       <section className="chatbox">
+        <div className="chat-log">
+          <div className="chat-message">
+            <div className="chat-message-center">
+              <div className="avatar"></div>
+              <div className="message">I have a prompt for you, chatGPT</div>
+            </div>
+          </div>
+          <div className="chat-message chatgpt">
+            <div className="chat-message-center">
+              <div className="avatar"></div>
+              <div className="message">I am an AI </div>
+            </div>
+          </div>
+        </div>
         <div className="chat-input-holder">
           <textarea
             className="chat-input-textarea"
