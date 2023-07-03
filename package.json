@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/mario-oliver/MOpenAI/issues"
   },
-  "homepage": "https://github.com/mario-oliver/MOpenAI#readme"
+  "homepage": "https://github.com/mario-oliver/MOpenAI#readme",
+  "dependencies": {
+    "normalize.css": "^8.0.1"
+  }
 }

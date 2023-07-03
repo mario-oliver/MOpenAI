@@ -13,9 +13,11 @@
 .sidemenu {
   width: 240px;
   border: 1px solid white;
+  background-color: #202123;
 }
 
 .chatbox {
   flex: 1;
   border: 1px solid white;
+  background-color: #343541;
 }
