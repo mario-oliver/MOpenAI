@@ -1,5 +1,6 @@
 import './App.css';
 import './normalize.css';
+import chatgptlogo from './ChatGPT.svg';
 
 function App() {
   return (
@@ -20,7 +21,9 @@ function App() {
           </div>
           <div className="chat-message chatgpt">
             <div className="chat-message-center">
-              <div className="avatar chatgpt"></div>
+              <div className="avatar chatgpt">
+                <img className="avatar_img" src={chatgptlogo} alt="chatgpt" />
+              </div>
               <div className="message">I am an AI </div>
             </div>
           </div>
