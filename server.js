@@ -1,12 +1,10 @@
 //********* EXPRESS SERVER */
-// import express from 'express';
-// const app = express();
-// const port = 3000;
-
-// app.get('/', )
+import express from 'express';
+const app = express();
+const port = 30800;
 
 //********* CHAT GPT CODE */
-import api_key from './api_key.js';
+import api_key from './keys/api_key.js';
 
 import { Configuration, OpenAIApi } from 'openai';
 const configuration = new Configuration({
@@ -16,7 +14,7 @@ const configuration = new Configuration({
 });
 const openai = new OpenAIApi(configuration);
 
-async function callApi() {
+app.post('/', async (req, res) => {
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
     prompt: 'Say thi sis a test',
@@ -24,6 +22,9 @@ async function callApi() {
     temperature: 0,
   });
   console.log(response.data.choices[0].text);
-}
+  res.json({ data: response.data });
+});
 
-callApi();
+app.listen(port, () => {
+  console.log(`server listening on port ${port}`);
+});
