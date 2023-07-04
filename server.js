@@ -1,7 +1,11 @@
 //********* EXPRESS SERVER */
 import express from 'express';
+import bodyParser from 'body-parser';
+import cors from 'cors';
 const app = express();
-const port = 30800;
+app.use(bodyParser.json());
+app.use(cors());
+const port = 3080;
 
 //********* CHAT GPT CODE */
 import api_key from './keys/api_key.js';
@@ -15,14 +19,16 @@ const configuration = new Configuration({
 const openai = new OpenAIApi(configuration);
 
 app.post('/', async (req, res) => {
+  const { message } = req.body;
+  //   console.log(message);
   const response = await openai.createCompletion({
     model: 'text-davinci-003',
-    prompt: 'Say thi sis a test',
-    max_tokens: 7,
-    temperature: 0,
+    prompt: `${message}`,
+    max_tokens: 100,
+    temperature: 0.5,
   });
-  console.log(response.data.choices[0].text);
-  res.json({ data: response.data });
+  //   console.log(response.data.choices[0].text);
+  res.json({ message: response.data.choices[0].text });
 });
 
 app.listen(port, () => {

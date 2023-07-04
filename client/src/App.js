@@ -15,16 +15,36 @@ function App() {
       message: 'I want to use Chat GPT!',
     },
   ]);
-  const handleSubmit = (e) => {
+
+  const clearChat = () => {
+    setChatLog([]);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setChatLog([...chatLog, { user: 'me', message: input }]);
+    let chatLogNew = [...chatLog, { user: 'me', message: input }];
+    setChatLog(chatLogNew);
     setInput('');
+
+    const message = chatLogNew.map((message) => message.message).join('\n');
+    const response = await fetch('http://localhost:3080/', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        message: message,
+      }),
+    });
+    const data = await response.json();
+    console.log(data.message);
+    setChatLog([...chatLogNew, { user: 'gpt', message: `${data.message}` }]);
   };
 
   return (
     <div className="App">
       <aside className="sidemenu">
-        <div className="side-menu-button">
+        <div className="side-menu-button" onClick={clearChat}>
           <span>+ </span>New Chat
         </div>
       </aside>
@@ -34,6 +54,7 @@ function App() {
           {chatLog.map((chat, index) => {
             return (
               <div
+                key={index}
                 className={`chat-message ${chat.user === 'gpt' && 'chatgpt'}`}
               >
                 <div className="chat-message-center">
