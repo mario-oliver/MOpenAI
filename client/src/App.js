@@ -1,7 +1,7 @@
 import './App.css';
 import './normalize.css';
 import chatgptlogo from './ChatGPT.svg';
-import mlogo from './m.svg';
+import mlogo from './1.svg';
 import mopenai_logo from './MOpenAI.svg';
 import { useState, useEffect } from 'react';
 
