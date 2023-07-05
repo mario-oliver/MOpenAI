@@ -68,7 +68,7 @@
 
 .chat-area {
   overflow: scroll;
-  height: 88%;
+  height: calc(100vh - 88px);
   width: 100%;
 }
 
