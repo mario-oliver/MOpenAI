@@ -2,6 +2,7 @@ import './App.css';
 import './normalize.css';
 import chatgptlogo from './ChatGPT.svg';
 import mlogo from './m.svg';
+import mopenai_logo from './MOpenAI.svg';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -44,6 +45,8 @@ function App() {
         <div className="side-menu-button" onClick={clearChat}>
           <span>+ </span>New Chat
         </div>
+
+        <img className="mopenai_logo" src={mopenai_logo} alt="chatgpt" />
       </aside>
 
       <section className="chatbox">
