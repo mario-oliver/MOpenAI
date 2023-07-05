@@ -1,6 +1,7 @@
 import './App.css';
 import './normalize.css';
 import chatgptlogo from './ChatGPT.svg';
+import mlogo from './m.svg';
 import { useState, useEffect } from 'react';
 
 function App() {
@@ -9,10 +10,6 @@ function App() {
     {
       user: 'gpt',
       message: 'How can I help you today',
-    },
-    {
-      user: 'me',
-      message: 'I want to use Chat GPT!',
     },
   ]);
 
@@ -62,11 +59,17 @@ function App() {
                     <div
                       className={`avatar ${chat.user === 'gpt' && 'chatgpt'}`}
                     >
-                      {chat.user === 'gpt' && (
+                      {chat.user === 'gpt' ? (
                         <img
                           className="avatar_img"
                           src={chatgptlogo}
                           alt="chatgpt"
+                        />
+                      ) : (
+                        <img
+                          className="avatar_img"
+                          src={mlogo}
+                          alt="mario gpt"
                         />
                       )}
                     </div>
