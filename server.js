@@ -31,6 +31,14 @@ app.post('/', async (req, res) => {
   res.json({ message: response.data.choices[0].text });
 });
 
+app.get('/models', async (req, res) => {
+  const response = await openai.listEngines();
+  console.log(response);
+  res.json({
+    models: response.data,
+  });
+});
+
 app.listen(port, () => {
   console.log(`server listening on port ${port}`);
 });
